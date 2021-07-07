@@ -17,7 +17,7 @@ setup(
     long_description_content_type='text/x-rst',
     author='Miguel Romero',
     author_email='romeromiguelin@gmail.com',
-    url='https://github.com/omicas/P5/tree/master/miguel/code/xgb-python-flat',
+    url='https://github.com/migueleci/XGBfnc',
     license='MIT',
     packages=find_packages(exclude=('test', 'docs')),
     install_requires=[
