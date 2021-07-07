@@ -4,7 +4,7 @@
 Classification of nodes with structural properties
 --------------------------------------------------
 
-This algorithm aims to evaluate whether the structural (topological)
+This package aims to evaluate whether the structural (topological)
 properties of a network are useful for predicting node attributes of
 nodes (i.e., node classification). It uses a combination of multiple
 machine learning techniques, such as, XGBoost and the SMOTE sampling
@@ -20,6 +20,11 @@ automatically installed::
 
 The source code and examples can be found in the
 `GitHub repository <https://github.com/omicas/P5/tree/master/miguel/code/xgb-python-flat>`_.
+
+Documentation
+-------------
+
+Documentation of the package can be found `here <https://xgbfnc.readthedocs.io/en/latest/>`_.
 
 Example
 -------
