@@ -59,3 +59,8 @@ structural test is execute using the ``structural_test`` method. The test
 returns a boolean value which indicates whether the structural properties
 help to improve the prediction performance, the prediction for the model
 including the structural properties and its best parameters.
+
+To run the example execute the following commands::
+
+  cd test/
+  python3 test_small.py
