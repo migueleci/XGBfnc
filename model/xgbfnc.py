@@ -111,7 +111,7 @@ class XGBfnc:
     self.output_path = output_path
     if output_path == None:
       dt = datetime.datetime.today()
-      self.output_path = "{3}-{2}-{1}".format(dt.day, dt.month, dt.year)
+      self.output_path = "{2}-{1}-{0}".format(dt.day, dt.month, dt.year)
     if figs_path == None: self.figs_path = self.output_path
     self.create_path(self.output_path)
     self.create_path(self.figs_path)
@@ -126,7 +126,7 @@ class XGBfnc:
     :raises OSError: the path already exist
     """
     try:
-      os.makedirs(self.output_path)
+      os.makedirs(self.output_path, exist_ok=True)
     except:
       print('Something is wrong with the output path: {0}'.format(self.output_path))
       print('Verify the path and try again.')
@@ -216,8 +216,8 @@ class XGBfnc:
 
     :param y_orig: Truth values of the prediction.
     :type y_orig: np.array[int]
-    :param y_pred: Predicted probabilities with the XGBoost classifier.
-    :type y_pred: np.array[float]
+    :param y_pred_prob: Predicted probabilities with the XGBoost classifier.
+    :type y_pred_prob: np.array[float]
 
     :return: Evaluation metrics for the prediction.
     :rtype: dict[string->float]
@@ -229,9 +229,8 @@ class XGBfnc:
     ncm = confusion_matrix(y_orig, y_pred_new, normalize='true') # normalized confusion matrix
     f1s = f1_score(y_orig, y_pred_new) # f1 score
     prec, recall, fscore, support = precision_recall_fscore_support(y_orig, y_pred_new) # precision and recall
-    assert f1s == fscore
 
-    mts = {'roc':roc,'ap':ap,'f1s':f1s,'thr':opt_thr,'prec':prec[1],
+    mts = {'roc':roc,'ap':ap,'f1s':f1s,'prec':prec[1],
            'rec':recall[1],'tnr':ncm[0,0],'tpr':ncm[1,1]}
 
     return mts
@@ -286,10 +285,10 @@ class XGBfnc:
     plot_prs([recall_a,recall_b], [prec_a,prec_b], [ap_a,ap_b], labels, self.ylabel, self.figs_path)
 
     # compute best threshold, according to PR curve
-    anew = self.opt_threshold(prec_a, recall_a, a)
+    anew = self.opt_threshold(self.y, a)
     ancm = confusion_matrix(self.y, anew, normalize='true') # normalized confusion matrix
     plot_conf_matrix(ancm, '{0}_{1}'.format(self.ylabel, labels[0]), self.figs_path)
-    bnew = self.opt_threshold(prec_b, recall_b, b)
+    bnew = self.opt_threshold(self.y, b)
     bncm = confusion_matrix(self.y, bnew, normalize='true') # normalized confusion matrix
     plot_conf_matrix(bncm, '{0}_{1}'.format(self.ylabel, labels[1]), self.figs_path)
 
@@ -311,8 +310,8 @@ class XGBfnc:
     df_resume = pd.DataFrame()
     metrics = a.keys()
     df_resume['Metric'] = pd.Series(metrics)
-    df_resume[labels[0]] = pd.Series([a[k] for f in metrics])
-    df_resume[labels[1]] = pd.Series([b[k] for f in metrics])
+    df_resume[labels[0]] = pd.Series([a[k] for k in metrics])
+    df_resume[labels[1]] = pd.Series([b[k] for k in metrics])
 
     df_resume.to_csv('{0}/{1}_resume.csv'.format(self.output_path, self.ylabel), index=False)
 
@@ -370,7 +369,7 @@ class XGBfnc:
       if np.sum(ytest) == 0 or np.sum(ytest) == len(ytest): continue
       if np.sum(ytrain) == 0 or np.sum(ytrain) == len(ytrain): continue
 
-      clf = create_classifier(n_iter=n_iter, n_jobs_cv=n_jobs_cv, n_jobs_xgb=n_jobs_xgb,
+      clf = self.create_classifier(n_iter=n_iter, n_jobs_cv=n_jobs_cv, n_jobs_xgb=n_jobs_xgb,
                           eval_metric=eval_metric, scoring=scoring, seed=seed)
       # pipeline for over-sampling and prediction. If the number of positive samples in
       # the training data is more than 3 smote is used, random oversampling otherwise
@@ -385,7 +384,7 @@ class XGBfnc:
       pred_prob = best_est.predict_proba(Xtest)[:,1]
       y_pred_prob[test_index] = pred_prob # save results per fold
 
-      pfm = self.evaluate(ytest, pred, pred_prob) # performance of prediction for fold
+      pfm = self.evaluate(ytest, pred_prob) # performance of prediction for fold
       tpr.append(pfm['tpr'])
       tnr.append(pfm['tnr'])
 

@@ -11,7 +11,7 @@ with open('LICENSE', encoding='utf-8') as f:
 
 setup(
     name='XGBfnc',
-    version='0.1.2',
+    version='0.1.4',
     description='Flat, node classification model',
     long_description=readme,
     long_description_content_type='text/x-rst',

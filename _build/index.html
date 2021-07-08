@@ -48,7 +48,7 @@
 </div>
 <ul class="simple">
 <li><p>Written by Miguel Romero</p></li>
-<li><p>Last update: 01/07/21</p></li>
+<li><p>Last update: 07/07/21</p></li>
 </ul>
 <section id="classification-of-nodes-with-structural-properties">
 <h2>Classification of nodes with structural properties<a class="headerlink" href="#classification-of-nodes-with-structural-properties" title="Permalink to this headline">¶</a></h2>
@@ -66,7 +66,7 @@ automatically installed:</p>
 </pre></div>
 </div>
 <p>The source code and examples can be found in the
-<a class="reference external" href="https://github.com/omicas/P5/tree/master/miguel/code/xgb-python-flat">GitHub repository</a>.</p>
+<a class="reference external" href="https://github.com/migueleci/XGBfnc">GitHub repository</a>.</p>
 </section>
 <section id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
@@ -79,7 +79,30 @@ the structural properties of the gene co-expression network improve the
 performance of the prediction of gene functions for rice
 (<em>Oryza sativa Japonica</em>). In this example, a gene co-expression network
 gathered from ATTED II is used.</p>
-<p>How to run the example?</p>
+<section id="how-to-run-the-example">
+<h3>How to run the example?<a class="headerlink" href="#how-to-run-the-example" title="Permalink to this headline">¶</a></h3>
+<p>The example can be found in the
+<a class="reference external" href="https://github.com/migueleci/XGBfnc">GitHub repository</a>. After creating
+adjacency matrix <code class="docutils literal notranslate"><span class="pre">adj</span></code> for the network, the structural properties are computed
+using the module <cite>data</cite> of the package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">,</span> <span class="n">strc_cols</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">compute_strc_prop</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method returns a DataFrame with the structural properties of the network
+and a list of the names of these properties (i.e., column names). After adding
+the additional features of the network to the DataFrame, the XGBfnc module is
+used to instantiate the XGBfnc class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">XGBfnc</span><span class="p">()</span>
+<span class="n">test</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">strc_cols</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">)</span>
+<span class="n">ans</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">structural_test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The data of the network is loaded using the <code class="docutils literal notranslate"><span class="pre">load_data</span></code> method. And the
+structural test is execute using the <code class="docutils literal notranslate"><span class="pre">structural_test</span></code> method. The test
+returns a boolean value which indicates whether the structural properties
+help to improve the prediction performance, the prediction for the model
+including the structural properties and its best parameters.</p>
+</section>
 </section>
 </section>
 <section id="xgbfnc-package">
@@ -165,7 +188,7 @@ auc roc, average precision score, precision, recall and F1 score.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>y_orig</strong> (<em>np.array</em><em>[</em><em>int</em><em>]</em>) – Truth values of the prediction.</p></li>
-<li><p><strong>y_pred</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Predicted probabilities with the XGBoost classifier.</p></li>
+<li><p><strong>y_pred_prob</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Predicted probabilities with the XGBoost classifier.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -339,7 +362,7 @@ structural properties of the network.</p></li>
 <p>Module for computing the structural properties of a network.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="model.data.compute_strc_prop">
-<span class="sig-prename descclassname"><span class="pre">model.data.</span></span><span class="sig-name descname"><span class="pre">compute_strc_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adj_mad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.data.compute_strc_prop" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">model.data.</span></span><span class="sig-name descname"><span class="pre">compute_strc_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adj_mad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.data.compute_strc_prop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute multiple structural properties of the input network. Two types of
 properties are computed: hand-crafted and node embeddings.</p>
 <dl class="field-list simple">
@@ -347,8 +370,6 @@ properties are computed: hand-crafted and node embeddings.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>adj_mad</strong> (<em>np.matrix</em><em>[</em><em>int</em><em>]</em>) – Adjacency matrix representation of the network, square and
 symmetric matrix.</p></li>
-<li><p><strong>nodes</strong> (<em>List</em><em>[</em><em>string</em><em>]</em><em>, </em><em>optional</em>) – List of identifiers of nodes, must match the number of rows of
-the adjacency matrix.</p></li>
 <li><p><strong>dimensions</strong> (<em>int</em>) – Dimension of the node embedding, defaults to 16</p></li>
 <li><p><strong>p</strong> (<em>float</em>) – Return parameter of node2vec, defaults to 1</p></li>
 <li><p><strong>q</strong> (<em>floar</em>) – In-out parameter of node2vec, defaults to 0.5</p></li>
@@ -423,6 +444,24 @@ of the network and list of labels (names) of the features.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="model.plots.plot_prs">
+<span class="sig-prename descclassname"><span class="pre">model.plots.</span></span><span class="sig-name descname"><span class="pre">plot_prs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prcl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.plots.plot_prs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot multiple precision-recall curves in the same figure and save it in a PDF file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>recl</strong> (<em>np.arry</em><em>[</em><em>np.array</em><em>[</em><em>float</em><em>]</em><em>]</em>) – Array of arrays of recall values for multiple predictions</p></li>
+<li><p><strong>prcl</strong> (<em>np.arry</em><em>[</em><em>np.array</em><em>[</em><em>float</em><em>]</em><em>]</em>) – Array of arrays of precision values for multiple predictions</p></li>
+<li><p><strong>apl</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Array of average precision values for multiple predictions</p></li>
+<li><p><strong>labels</strong> (<em>List</em><em>[</em><em>string</em><em>]</em>) – Labels of the multiple models plotted</p></li>
+<li><p><strong>filename</strong> (<em>string</em>) – Name of the PDF file</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – Path where the plot will be stored.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="model.plots.plot_roc">
 <span class="sig-prename descclassname"><span class="pre">model.plots.</span></span><span class="sig-name descname"><span class="pre">plot_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.plots.plot_roc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a roc curve and save it in a PDF file</p>
@@ -449,24 +488,6 @@ of the network and list of labels (names) of the features.</p>
 <li><p><strong>fprl</strong> (<em>np.arry</em><em>[</em><em>np.array</em><em>[</em><em>float</em><em>]</em><em>]</em>) – Array of arrays of false positive rate values for multiple predictions</p></li>
 <li><p><strong>tprl</strong> (<em>np.arry</em><em>[</em><em>np.array</em><em>[</em><em>float</em><em>]</em><em>]</em>) – Array of arrays of true positive rate values for multiple predictions</p></li>
 <li><p><strong>aucl</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Array of area under roc curve values for multiple predictions</p></li>
-<li><p><strong>labels</strong> (<em>List</em><em>[</em><em>string</em><em>]</em>) – Labels of the multiple models plotted</p></li>
-<li><p><strong>filename</strong> (<em>string</em>) – Name of the PDF file</p></li>
-<li><p><strong>path</strong> (<em>string</em>) – Path where the plot will be stored.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="model.plots.prs">
-<span class="sig-prename descclassname"><span class="pre">model.plots.</span></span><span class="sig-name descname"><span class="pre">prs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prcl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.plots.prs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot multiple precision-recall curves in the same figure and save it in a PDF file</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>recl</strong> (<em>np.arry</em><em>[</em><em>np.array</em><em>[</em><em>float</em><em>]</em><em>]</em>) – Array of arrays of recall values for multiple predictions</p></li>
-<li><p><strong>prcl</strong> (<em>np.arry</em><em>[</em><em>np.array</em><em>[</em><em>float</em><em>]</em><em>]</em>) – Array of arrays of precision values for multiple predictions</p></li>
-<li><p><strong>apl</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Array of average precision values for multiple predictions</p></li>
 <li><p><strong>labels</strong> (<em>List</em><em>[</em><em>string</em><em>]</em>) – Labels of the multiple models plotted</p></li>
 <li><p><strong>filename</strong> (<em>string</em>) – Name of the PDF file</p></li>
 <li><p><strong>path</strong> (<em>string</em>) – Path where the plot will be stored.</p></li>
@@ -502,7 +523,10 @@ of the network and list of labels (names) of the features.</p>
 <li><a class="reference internal" href="#classification-of-nodes-with-structural-properties">Classification of nodes with structural properties</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
-<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#example">Example</a><ul>
+<li><a class="reference internal" href="#how-to-run-the-example">How to run the example?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a class="reference internal" href="#xgbfnc-package">XGBfnc package</a><ul>

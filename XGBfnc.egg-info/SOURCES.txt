@@ -10,6 +10,5 @@ model/__init__.py
 model/data.py
 model/plots.py
 model/xgbfnc.py
-test/test_a.py
-test/test_b.py
-test/test_c.py
+test/test_big.py
+test/test_small.py

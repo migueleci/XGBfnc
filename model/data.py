@@ -54,7 +54,7 @@ def scale_data(data):
 
 
 # compute structural properties and feature embedding
-def compute_strc_prop(adj_mad, nodes=None, dimensions=16, p=1, q=0.5,
+def compute_strc_prop(adj_mad, dimensions=16, p=1, q=0.5,
                       path=None, log=False, seed=None):
   """
   Compute multiple structural properties of the input network. Two types of
@@ -63,9 +63,6 @@ def compute_strc_prop(adj_mad, nodes=None, dimensions=16, p=1, q=0.5,
   :param adj_mad: Adjacency matrix representation of the network, square and
     symmetric matrix.
   :type adj_mad: np.matrix[int]
-  :param nodes: List of identifiers of nodes, must match the number of rows of
-    the adjacency matrix.
-  :type nodes: List[string], optional
   :param dimensions: Dimension of the node embedding, defaults to 16
   :type dimensions: int
   :param p: Return parameter of node2vec, defaults to 1
@@ -106,7 +103,7 @@ def compute_strc_prop(adj_mad, nodes=None, dimensions=16, p=1, q=0.5,
   yhat = clustering_model.predict(embeddings_2d)
 
   # igraph
-  g = ig.Graph.Adjacency((sm_ppi > 0).tolist())
+  g = ig.Graph.Adjacency((adj_mad > 0).tolist())
   g = g.as_undirected()
   if log: prin(ig.summary(g))
 
@@ -147,11 +144,9 @@ def compute_strc_prop(adj_mad, nodes=None, dimensions=16, p=1, q=0.5,
 
   columns = list(strc_df.columns)
   strc_df = scale_data(strc_df)
-  if nodes != None:
-    strc_df['node'] = pd.Series(nodes)
   if path != None:
     strc_df.to_csv('{0}/data.csv'.format(path), index=False)
   else:
     strc_df.to_csv('data.csv', index=False)
 
-  return df, columns
+  return strc_df, columns

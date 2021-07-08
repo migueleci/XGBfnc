@@ -10,6 +10,7 @@ Module for plotting the results of the prediction.
 """
 
 # Libraries
+import pandas as pd
 import seaborn as sns
 from matplotlib import rc
 from matplotlib import pyplot as plt
@@ -109,7 +110,7 @@ def plot_pr(rec, prc, ap, filename, path):
   plt.close()
 
 
-def prs(recl, prcl, apl, labels, filename, path):
+def plot_prs(recl, prcl, apl, labels, filename, path):
   """
   Plot multiple precision-recall curves in the same figure and save it in a PDF file
 

@@ -44,7 +44,7 @@
             
   <ul class="simple">
 <li><p>Written by Miguel Romero</p></li>
-<li><p>Last update: 01/07/21</p></li>
+<li><p>Last update: 07/07/21</p></li>
 </ul>
 <section id="classification-of-nodes-with-structural-properties">
 <h1>Classification of nodes with structural properties<a class="headerlink" href="#classification-of-nodes-with-structural-properties" title="Permalink to this headline">¶</a></h1>
@@ -62,7 +62,7 @@ automatically installed:</p>
 </pre></div>
 </div>
 <p>The source code and examples can be found in the
-<a class="reference external" href="https://github.com/omicas/P5/tree/master/miguel/code/xgb-python-flat">GitHub repository</a>.</p>
+<a class="reference external" href="https://github.com/migueleci/XGBfnc">GitHub repository</a>.</p>
 </section>
 <section id="documentation">
 <h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
@@ -75,7 +75,30 @@ the structural properties of the gene co-expression network improve the
 performance of the prediction of gene functions for rice
 (<em>Oryza sativa Japonica</em>). In this example, a gene co-expression network
 gathered from ATTED II is used.</p>
-<p>How to run the example?</p>
+<section id="how-to-run-the-example">
+<h2>How to run the example?<a class="headerlink" href="#how-to-run-the-example" title="Permalink to this headline">¶</a></h2>
+<p>The example can be found in the
+<a class="reference external" href="https://github.com/migueleci/XGBfnc">GitHub repository</a>. After creating
+adjacency matrix <code class="docutils literal notranslate"><span class="pre">adj</span></code> for the network, the structural properties are computed
+using the module <cite>data</cite> of the package:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">,</span> <span class="n">strc_cols</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">compute_strc_prop</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This method returns a DataFrame with the structural properties of the network
+and a list of the names of these properties (i.e., column names). After adding
+the additional features of the network to the DataFrame, the XGBfnc module is
+used to instantiate the XGBfnc class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="n">XGBfnc</span><span class="p">()</span>
+<span class="n">test</span><span class="o">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">strc_cols</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">output_path</span><span class="o">=</span><span class="s1">&#39;output&#39;</span><span class="p">)</span>
+<span class="n">ans</span><span class="p">,</span> <span class="n">pred</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">structural_test</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The data of the network is loaded using the <code class="docutils literal notranslate"><span class="pre">load_data</span></code> method. And the
+structural test is execute using the <code class="docutils literal notranslate"><span class="pre">structural_test</span></code> method. The test
+returns a boolean value which indicates whether the structural properties
+help to improve the prediction performance, the prediction for the model
+including the structural properties and its best parameters.</p>
+</section>
 </section>
 
 
@@ -90,7 +113,10 @@ gathered from ATTED II is used.</p>
 <li><a class="reference internal" href="#">Classification of nodes with structural properties</a></li>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#documentation">Documentation</a></li>
-<li><a class="reference internal" href="#example">Example</a></li>
+<li><a class="reference internal" href="#example">Example</a><ul>
+<li><a class="reference internal" href="#how-to-run-the-example">How to run the example?</a></li>
+</ul>
+</li>
 </ul>
 
   <div role="note" aria-label="source link">
