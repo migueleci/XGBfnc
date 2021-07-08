@@ -9,9 +9,9 @@ import pandas as pd
 from time import time
 from tqdm import tqdm
 
-from context import model
-from model import XGBfnc
-from model import data
+from context import xgbfnc
+from xgbfnc import XGBfnc
+from xgbfnc import data
 
 ##########################
 # 1. Import and clean data

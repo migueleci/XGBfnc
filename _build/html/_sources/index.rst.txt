@@ -15,27 +15,27 @@ Welcome to the documentoon of flat classification of nodes!
 XGBfnc package
 ==============
 
-model.xgbfnc module
--------------------
+xgbfnc.xgbfnc module
+--------------------
 
-.. automodule:: model.xgbfnc
+.. automodule:: xgbfnc.xgbfnc
    :members:
    :undoc-members:
    :show-inheritance:
 
-model.data module
+xgbfnc.data module
 -------------------
 
-.. automodule:: model.data
+.. automodule:: xgbfnc.data
    :members:
    :undoc-members:
    :show-inheritance:
 
 
-model.plots module
+xgbfnc.plots module
 -------------------
 
-.. automodule:: model.plots
+.. automodule:: xgbfnc.plots
    :members:
    :undoc-members:
    :show-inheritance:
@@ -44,7 +44,7 @@ model.plots module
 Module contents
 ---------------
 
-.. automodule:: model
+.. automodule:: xgbfnc
    :members:
    :undoc-members:
    :show-inheritance:

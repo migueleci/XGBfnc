@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: XGBfnc
-Version: 0.1.4
+Version: 0.1.5
 Summary: Flat, node classification model
 Home-page: https://github.com/migueleci/XGBfnc
 Author: Miguel Romero
@@ -34,7 +34,7 @@ Installation
 The xgbfnc package can be install using pip, the requirements will be
 automatically installed::
 
-  python3 -m pip install XGBfnc
+  python3 -m pip install xgbfnc
 
 The source code and examples can be found in the
 `GitHub repository <https://github.com/migueleci/XGBfnc>`_.
@@ -77,5 +77,10 @@ structural test is execute using the ``structural_test`` method. The test
 returns a boolean value which indicates whether the structural properties
 help to improve the prediction performance, the prediction for the model
 including the structural properties and its best parameters.
+
+To run the example execute the following commands::
+
+  cd test/
+  python3 test_small.py
 
 

@@ -62,7 +62,7 @@ technique.</p>
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>The xgbfnc package can be install using pip, the requirements will be
 automatically installed:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">XGBfnc</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">xgbfnc</span>
 </pre></div>
 </div>
 <p>The source code and examples can be found in the
@@ -102,18 +102,23 @@ structural test is execute using the <code class="docutils literal notranslate">
 returns a boolean value which indicates whether the structural properties
 help to improve the prediction performance, the prediction for the model
 including the structural properties and its best parameters.</p>
+<p>To run the example execute the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">test</span><span class="o">/</span>
+<span class="n">python3</span> <span class="n">test_small</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
 <section id="xgbfnc-package">
 <h1>XGBfnc package<a class="headerlink" href="#xgbfnc-package" title="Permalink to this headline">¶</a></h1>
-<section id="module-model.xgbfnc">
-<span id="model-xgbfnc-module"></span><h2>model.xgbfnc module<a class="headerlink" href="#module-model.xgbfnc" title="Permalink to this headline">¶</a></h2>
+<section id="module-xgbfnc.xgbfnc">
+<span id="xgbfnc-xgbfnc-module"></span><h2>xgbfnc.xgbfnc module<a class="headerlink" href="#module-xgbfnc.xgbfnc" title="Permalink to this headline">¶</a></h2>
 <p>Module for flat node classification and testing the importance of the
 structural properties of the network.</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">model.xgbfnc.</span></span><span class="sig-name descname"><span class="pre">XGBfnc</span></span><a class="headerlink" href="#model.xgbfnc.XGBfnc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">xgbfnc.xgbfnc.</span></span><span class="sig-name descname"><span class="pre">XGBfnc</span></span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class for flat node classification. This class builds two XGBoost binary
 classifier for the attribute prediction using two datasets with different
@@ -137,8 +142,8 @@ be stored.</p></li>
 </dd>
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.create_classifier">
-<span class="sig-name descname"><span class="pre">create_classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_xgb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aucpr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'recall'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.create_classifier" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.create_classifier">
+<span class="sig-name descname"><span class="pre">create_classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_xgb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aucpr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'recall'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.create_classifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>Builds the binary classifier within a hyper-parameters tuning model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -166,8 +171,8 @@ to “recall”</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.create_path">
-<span class="sig-name descname"><span class="pre">create_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.create_path" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.create_path">
+<span class="sig-name descname"><span class="pre">create_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.create_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a path.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -180,8 +185,8 @@ to “recall”</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.evaluate">
-<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_orig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred_prob</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.evaluate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_orig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred_prob</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.evaluate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the performance of the prediction using metrics such as the
 auc roc, average precision score, precision, recall and F1 score.</p>
 <dl class="field-list simple">
@@ -201,8 +206,8 @@ auc roc, average precision score, precision, recall and F1 score.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.load_data">
-<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strc_cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figs_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.load_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.load_data">
+<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strc_cols</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ylabel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">figs_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.load_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Load the data of the network.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -219,8 +224,8 @@ auc roc, average precision score, precision, recall and F1 score.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.opt_threshold">
-<span class="sig-name descname"><span class="pre">opt_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_orig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.opt_threshold" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.opt_threshold">
+<span class="sig-name descname"><span class="pre">opt_threshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_orig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.opt_threshold" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the classification from probabilities based on the optimum
 threshold according to precision-recall curve, that is the threshold
 that maximies the F1 score.</p>
@@ -242,8 +247,8 @@ maximies F1 score.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.plot_performance">
-<span class="sig-name descname"><span class="pre">plot_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['without',</span> <span class="pre">'with']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.plot_performance" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.plot_performance">
+<span class="sig-name descname"><span class="pre">plot_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['without',</span> <span class="pre">'with']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.plot_performance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot roc curve, precision-recall curve and confussion matrices for the
 prediction of both models, i.e., without and with structural properties.</p>
 <dl class="field-list simple">
@@ -260,8 +265,8 @@ structural properties of the network.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.print_performance">
-<span class="sig-name descname"><span class="pre">print_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.print_performance" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.print_performance">
+<span class="sig-name descname"><span class="pre">print_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.print_performance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Print the evaluation metrics for the prediction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -274,8 +279,8 @@ structural properties of the network.</p></li>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.structural_test">
-<span class="sig-name descname"><span class="pre">structural_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.structural_test" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.structural_test">
+<span class="sig-name descname"><span class="pre">structural_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.structural_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test whether the structural properties of the network help to improve the
 prediction performance by building two different models and compare their
 results. One model includes the structural properties, whereas the other
@@ -303,8 +308,8 @@ including the structural properties.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.train">
-<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_xgb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aucpr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'recall'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.train" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.train">
+<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_splits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_xgb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aucpr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'recall'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.train" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the performance of the prediction using metrics such as the
 auc roc, average precision score, precision, recall and F1 score.</p>
 <dl class="field-list simple">
@@ -337,8 +342,8 @@ the classfifier.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="model.xgbfnc.XGBfnc.write_csv">
-<span class="sig-name descname"><span class="pre">write_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['without',</span> <span class="pre">'with']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.xgbfnc.XGBfnc.write_csv" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.write_csv">
+<span class="sig-name descname"><span class="pre">write_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['without',</span> <span class="pre">'with']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.write_csv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save the evaluation metrics for prediction of both models, i.e., without
 and with structural properties.</p>
 <dl class="field-list simple">
@@ -357,12 +362,12 @@ structural properties of the network.</p></li>
 </dd></dl>
 
 </section>
-<section id="module-model.data">
-<span id="model-data-module"></span><h2>model.data module<a class="headerlink" href="#module-model.data" title="Permalink to this headline">¶</a></h2>
+<section id="module-xgbfnc.data">
+<span id="xgbfnc-data-module"></span><h2>xgbfnc.data module<a class="headerlink" href="#module-xgbfnc.data" title="Permalink to this headline">¶</a></h2>
 <p>Module for computing the structural properties of a network.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="model.data.compute_strc_prop">
-<span class="sig-prename descclassname"><span class="pre">model.data.</span></span><span class="sig-name descname"><span class="pre">compute_strc_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adj_mad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.data.compute_strc_prop" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.data.compute_strc_prop">
+<span class="sig-prename descclassname"><span class="pre">xgbfnc.data.</span></span><span class="sig-name descname"><span class="pre">compute_strc_prop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">adj_mad</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dimensions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">q</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.data.compute_strc_prop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute multiple structural properties of the input network. Two types of
 properties are computed: hand-crafted and node embeddings.</p>
 <dl class="field-list simple">
@@ -390,8 +395,8 @@ of the network and list of labels (names) of the features.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="model.data.scale_data">
-<span class="sig-prename descclassname"><span class="pre">model.data.</span></span><span class="sig-name descname"><span class="pre">scale_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.data.scale_data" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.data.scale_data">
+<span class="sig-prename descclassname"><span class="pre">xgbfnc.data.</span></span><span class="sig-name descname"><span class="pre">scale_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.data.scale_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>Scale the data of a dataset without modifying the distribution of data.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -407,12 +412,12 @@ of the network and list of labels (names) of the features.</p>
 </dd></dl>
 
 </section>
-<section id="module-model.plots">
-<span id="model-plots-module"></span><h2>model.plots module<a class="headerlink" href="#module-model.plots" title="Permalink to this headline">¶</a></h2>
+<section id="module-xgbfnc.plots">
+<span id="xgbfnc-plots-module"></span><h2>xgbfnc.plots module<a class="headerlink" href="#module-xgbfnc.plots" title="Permalink to this headline">¶</a></h2>
 <p>Module for plotting the results of the prediction.</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="model.plots.plot_conf_matrix">
-<span class="sig-prename descclassname"><span class="pre">model.plots.</span></span><span class="sig-name descname"><span class="pre">plot_conf_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">1]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.plots.plot_conf_matrix" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.plots.plot_conf_matrix">
+<span class="sig-prename descclassname"><span class="pre">xgbfnc.plots.</span></span><span class="sig-name descname"><span class="pre">plot_conf_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0,</span> <span class="pre">1]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.plots.plot_conf_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a confusion matrix and save it in a PDF file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -427,8 +432,8 @@ of the network and list of labels (names) of the features.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="model.plots.plot_pr">
-<span class="sig-prename descclassname"><span class="pre">model.plots.</span></span><span class="sig-name descname"><span class="pre">plot_pr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.plots.plot_pr" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.plots.plot_pr">
+<span class="sig-prename descclassname"><span class="pre">xgbfnc.plots.</span></span><span class="sig-name descname"><span class="pre">plot_pr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ap</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.plots.plot_pr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a precision-recall curve and save it in a PDF file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -444,8 +449,8 @@ of the network and list of labels (names) of the features.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="model.plots.plot_prs">
-<span class="sig-prename descclassname"><span class="pre">model.plots.</span></span><span class="sig-name descname"><span class="pre">plot_prs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prcl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.plots.plot_prs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.plots.plot_prs">
+<span class="sig-prename descclassname"><span class="pre">xgbfnc.plots.</span></span><span class="sig-name descname"><span class="pre">plot_prs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prcl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">apl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.plots.plot_prs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot multiple precision-recall curves in the same figure and save it in a PDF file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -462,8 +467,8 @@ of the network and list of labels (names) of the features.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="model.plots.plot_roc">
-<span class="sig-prename descclassname"><span class="pre">model.plots.</span></span><span class="sig-name descname"><span class="pre">plot_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.plots.plot_roc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.plots.plot_roc">
+<span class="sig-prename descclassname"><span class="pre">xgbfnc.plots.</span></span><span class="sig-name descname"><span class="pre">plot_roc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tpr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">auc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.plots.plot_roc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot a roc curve and save it in a PDF file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -479,8 +484,8 @@ of the network and list of labels (names) of the features.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="model.plots.plot_rocs">
-<span class="sig-prename descclassname"><span class="pre">model.plots.</span></span><span class="sig-name descname"><span class="pre">plot_rocs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fprl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tprl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aucl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#model.plots.plot_rocs" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="xgbfnc.plots.plot_rocs">
+<span class="sig-prename descclassname"><span class="pre">xgbfnc.plots.</span></span><span class="sig-name descname"><span class="pre">plot_rocs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fprl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tprl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aucl</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.plots.plot_rocs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot multiple roc curves in the same figure and save it in a PDF file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -497,8 +502,8 @@ of the network and list of labels (names) of the features.</p>
 </dd></dl>
 
 </section>
-<section id="module-model">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-model" title="Permalink to this headline">¶</a></h2>
+<section id="module-xgbfnc">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-xgbfnc" title="Permalink to this headline">¶</a></h2>
 </section>
 </section>
 <section id="indices-and-tables">
@@ -530,10 +535,10 @@ of the network and list of labels (names) of the features.</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#xgbfnc-package">XGBfnc package</a><ul>
-<li><a class="reference internal" href="#module-model.xgbfnc">model.xgbfnc module</a></li>
-<li><a class="reference internal" href="#module-model.data">model.data module</a></li>
-<li><a class="reference internal" href="#module-model.plots">model.plots module</a></li>
-<li><a class="reference internal" href="#module-model">Module contents</a></li>
+<li><a class="reference internal" href="#module-xgbfnc.xgbfnc">xgbfnc.xgbfnc module</a></li>
+<li><a class="reference internal" href="#module-xgbfnc.data">xgbfnc.data module</a></li>
+<li><a class="reference internal" href="#module-xgbfnc.plots">xgbfnc.plots module</a></li>
+<li><a class="reference internal" href="#module-xgbfnc">Module contents</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>

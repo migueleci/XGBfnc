@@ -6,9 +6,9 @@ XGBfnc.egg-info/SOURCES.txt
 XGBfnc.egg-info/dependency_links.txt
 XGBfnc.egg-info/requires.txt
 XGBfnc.egg-info/top_level.txt
-model/__init__.py
-model/data.py
-model/plots.py
-model/xgbfnc.py
 test/test_big.py
 test/test_small.py
+xgbfnc/__init__.py
+xgbfnc/data.py
+xgbfnc/plots.py
+xgbfnc/xgbfnc.py
