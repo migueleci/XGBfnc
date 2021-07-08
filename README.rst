@@ -16,7 +16,7 @@ Installation
 The xgbfnc package can be install using pip, the requirements will be
 automatically installed::
 
-  python3 -m pip install XGBfnc
+  python3 -m pip install xgbfnc
 
 The source code and examples can be found in the
 `GitHub repository <https://github.com/migueleci/XGBfnc>`_.
