@@ -38,10 +38,15 @@ gathered from ATTED II is used.
 How to run the example?
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The example can be found in the
-`GitHub repository <https://github.com/migueleci/XGBfnc>`_. After creating
-adjacency matrix ``adj`` for the network, the structural properties are computed
-using the module `data` of the package::
+The complete source code of the example can be found in the
+`GitHub repository <https://github.com/migueleci/XGBfnc>`_. First, the *xgbfnc*
+package need to be imported::
+
+  from xgbfnc import xgbfnc
+  from xgbfnc import data
+
+After creating adjacency matrix ``adj`` for the network, the structural
+properties are computed using the module `data` of the package::
 
   df, strc_cols = data.compute_strc_prop(adj)
 

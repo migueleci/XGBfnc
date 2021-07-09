@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to the documentoon of flat classification of nodes! &#8212; Flat node classification alpha documentation</title>
+    <title>Welcome to the documentoon of flat classification of nodes! &#8212; Flat, node classification alpha documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
     
@@ -32,7 +32,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">Flat node classification alpha documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">Flat, node classification alpha documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to the documentoon of flat classification of nodes!</a></li> 
       </ul>
     </div>  
@@ -81,10 +81,15 @@ performance of the prediction of gene functions for rice
 gathered from ATTED II is used.</p>
 <section id="how-to-run-the-example">
 <h3>How to run the example?<a class="headerlink" href="#how-to-run-the-example" title="Permalink to this headline">¶</a></h3>
-<p>The example can be found in the
-<a class="reference external" href="https://github.com/migueleci/XGBfnc">GitHub repository</a>. After creating
-adjacency matrix <code class="docutils literal notranslate"><span class="pre">adj</span></code> for the network, the structural properties are computed
-using the module <cite>data</cite> of the package:</p>
+<p>The complete source code of the example can be found in the
+<a class="reference external" href="https://github.com/migueleci/XGBfnc">GitHub repository</a>. First, the <em>xgbfnc</em>
+package need to be imported:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xgbfnc</span> <span class="kn">import</span> <span class="n">xgbfnc</span>
+<span class="kn">from</span> <span class="nn">xgbfnc</span> <span class="kn">import</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p>After creating adjacency matrix <code class="docutils literal notranslate"><span class="pre">adj</span></code> for the network, the structural
+properties are computed using the module <cite>data</cite> of the package:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">,</span> <span class="n">strc_cols</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">compute_strc_prop</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -141,6 +146,24 @@ be stored.</p></li>
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.compare_plots">
+<span class="sig-name descname"><span class="pre">compare_plots</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['without',</span> <span class="pre">'with']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.compare_plots" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot roc curve, precision-recall curve and confussion matrices for the
+prediction of both models, i.e., without and with structural properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Predicted probabilities for the model <strong>without</strong> the structural
+properties of the network.</p></li>
+<li><p><strong>b</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Predicted probabilities for the model <strong>including</strong> the
+structural properties of the network.</p></li>
+<li><p><strong>labels</strong> (<em>List</em><em>[</em><em>string</em><em>]</em>) – Labels of both models for the plots.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.create_classifier">
 <span class="sig-name descname"><span class="pre">create_classifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_cv</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_jobs_xgb</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_metric</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'aucpr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scoring</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'recall'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.create_classifier" title="Permalink to this definition">¶</a></dt>
@@ -248,17 +271,14 @@ maximies F1 score.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="xgbfnc.xgbfnc.XGBfnc.plot_performance">
-<span class="sig-name descname"><span class="pre">plot_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['without',</span> <span class="pre">'with']</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.plot_performance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Plot roc curve, precision-recall curve and confussion matrices for the
-prediction of both models, i.e., without and with structural properties.</p>
+<span class="sig-name descname"><span class="pre">plot_performance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#xgbfnc.xgbfnc.XGBfnc.plot_performance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot roc curve, precision-recall curve and confussion matrices for a
+prediction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>a</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Predicted probabilities for the model <strong>without</strong> the structural
-properties of the network.</p></li>
-<li><p><strong>b</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Predicted probabilities for the model <strong>including</strong> the
-structural properties of the network.</p></li>
-<li><p><strong>labels</strong> (<em>List</em><em>[</em><em>string</em><em>]</em>) – Labels of both models for the plots.</p></li>
+<li><p><strong>a</strong> (<em>np.array</em><em>[</em><em>float</em><em>]</em>) – Predicted probabilities for the model.</p></li>
+<li><p><strong>label</strong> (<em>string</em>) – Label of the models for the plots.</p></li>
 </ul>
 </dd>
 </dl>
@@ -574,7 +594,7 @@ of the network and list of labels (names) of the features.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">Flat node classification alpha documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">Flat, node classification alpha documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Welcome to the documentoon of flat classification of nodes!</a></li> 
       </ul>
     </div>

@@ -256,7 +256,33 @@ class XGBfnc:
     print('True negative rate: {0:.3f}'.format(scores['tnr']))
 
 
-  def plot_performance(self, a, b, labels=['without', 'with']):
+  def plot_performance(self, a, label):
+    """
+    Plot roc curve, precision-recall curve and confussion matrices for a
+    prediction.
+
+    :param a: Predicted probabilities for the model.
+    :type a: np.array[float]
+    :param label: Label of the models for the plots.
+    :type label: string
+    """
+    # ROC AUC
+    roc_a = roc_auc_score(self.y, a)
+    fpr_a, tpr_a, _ = roc_curve(self.y, a)
+    plot_roc(fpr_a, tpr_a, roc_a, '{0}_{1}'.format(self.ylabel, label), self.figs_path)
+
+    # Average precision
+    ap_a = average_precision_score(self.y, a)
+    prec_a, recall_a, thresh_a = precision_recall_curve(self.y, a)
+    plot_pr(recall_a, prec_a, ap_a, labels, '{0}_{1}'.format(self.ylabel, label), self.figs_path)
+
+    # compute best threshold, according to PR curve
+    anew = self.opt_threshold(self.y, a)
+    ancm = confusion_matrix(self.y, anew, normalize='true') # normalized confusion matrix
+    plot_conf_matrix(ancm, '{0}_{1}'.format(self.ylabel, label), self.figs_path)
+
+
+  def compare_plots(self, a, b, labels=['without', 'with']):
     """
     Plot roc curve, precision-recall curve and confussion matrices for the
     prediction of both models, i.e., without and with structural properties.
@@ -445,7 +471,7 @@ class XGBfnc:
     strc_pred_clf = self.opt_threshold(self.y, strc_pred_prob)
     if log: self.print_performance(strc_pred_prob, 'Including topological properties')
 
-    self.plot_performance(wo_pred_prob, strc_pred_prob)
+    self.compare_plots(wo_pred_prob, strc_pred_prob)
     self.write_csv(wo_perf, strc_perf)
 
     # test whether the structural properties of the network improve the

@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Classification of nodes with structural properties &#8212; Flat node classification alpha documentation</title>
+    <title>Classification of nodes with structural properties &#8212; Flat, node classification alpha documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/bizstyle.css" />
     
@@ -32,7 +32,7 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Flat node classification alpha documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flat, node classification alpha documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Classification of nodes with structural properties</a></li> 
       </ul>
     </div>  
@@ -77,10 +77,15 @@ performance of the prediction of gene functions for rice
 gathered from ATTED II is used.</p>
 <section id="how-to-run-the-example">
 <h2>How to run the example?<a class="headerlink" href="#how-to-run-the-example" title="Permalink to this headline">¶</a></h2>
-<p>The example can be found in the
-<a class="reference external" href="https://github.com/migueleci/XGBfnc">GitHub repository</a>. After creating
-adjacency matrix <code class="docutils literal notranslate"><span class="pre">adj</span></code> for the network, the structural properties are computed
-using the module <cite>data</cite> of the package:</p>
+<p>The complete source code of the example can be found in the
+<a class="reference external" href="https://github.com/migueleci/XGBfnc">GitHub repository</a>. First, the <em>xgbfnc</em>
+package need to be imported:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">xgbfnc</span> <span class="kn">import</span> <span class="n">xgbfnc</span>
+<span class="kn">from</span> <span class="nn">xgbfnc</span> <span class="kn">import</span> <span class="n">data</span>
+</pre></div>
+</div>
+<p>After creating adjacency matrix <code class="docutils literal notranslate"><span class="pre">adj</span></code> for the network, the structural
+properties are computed using the module <cite>data</cite> of the package:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">,</span> <span class="n">strc_cols</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">compute_strc_prop</span><span class="p">(</span><span class="n">adj</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -154,7 +159,7 @@ including the structural properties and its best parameters.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">Flat node classification alpha documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Flat, node classification alpha documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Classification of nodes with structural properties</a></li> 
       </ul>
     </div>

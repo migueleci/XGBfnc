@@ -9,7 +9,6 @@ import pandas as pd
 from time import time
 from tqdm import tqdm
 
-from context import xgbfnc
 from xgbfnc import XGBfnc
 from xgbfnc import data
 
